@@ -1,0 +1,22 @@
+{
+    "name": "STI.HK",
+    "version": "0.0.1",
+    "description": "Trøndersk hockey samlet på ett sted",
+    "contributors": [
+        {
+        "name": "Jonas Refseth",
+        "email": "jonas@oisann.net",
+        "url": "https://www.oisann.net/"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Oisann/STIHK.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Oisann/STIHK/issues"
+    },
+    "dependencies": {
+        "gulp": "^3.8.7"
+    }
+}

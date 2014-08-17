@@ -1,7 +1,11 @@
 {
-  "name": "STI.HK",
+  "name": "STIHK",
   "version": "0.0.1",
   "description": "Trøndersk hockey samlet på ett sted",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
   "contributors": [
     {
       "name": "Jonas Refseth",
@@ -24,8 +28,18 @@
     "gulp-less": "~1.3.3",
     "gulp-autoprefixer": "0.0.8",
     "gulp-cssmin": "~0.1.6",
+    "gulp-sourcemaps": "~1.1.1",
+    "gulp-concat": "~2.3.4",
+    "gulp-rename": "~1.2.0",
     "express": "~4.8.4",
+    "jade": "~1.3.0",
+    "mongodb": "~1.4.8",
+    "body-parser": "~1.0.2",
+    "static-favicon": "~1.0.2",
+    "cookie-parser": "~1.3.2",
+    "morgan": "~1.2.3",
+    "debug": "~1.0.4",
     "socket.io": "~1.0.6",
-    "mongodb": "~1.4.8"
+    "ua-parser-js": "~0.7.0"
   }
 }

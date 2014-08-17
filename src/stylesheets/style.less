@@ -1,0 +1,42 @@
+@background: #fff;
+@text-color: #000;
+@header-height: 80px;
+
+html {
+	background-color: @background;
+	color: @text-color;
+}
+
+#logo {
+	width: 245px;
+	height: 80px;
+	background: #fff url('../img/logo.png') no-repeat left top;
+	background-size: contain;
+}
+
+header {
+	position: fixed;
+}
+
+#cont {
+	padding-top: @header-height;
+	padding-right: 250px;
+	min-height: calc(~'100%')
+}
+
+#feed {
+	position: fixed;
+	top: @header-height;
+	right: 0px;
+	bottom: 0px;
+	background-color: lightgray;
+	height: calc(~'100% - ' @header-height);
+	width: 250px - 1px;
+	border-left: 1px solid @text-color;
+	overflow: auto;
+}
+
+footer {
+	text-align: center;
+	bottom: 0px;
+}

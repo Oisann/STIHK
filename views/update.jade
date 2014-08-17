@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title STIHK.no krever en moderne nettleser
+    link(rel='stylesheet', href='/css/update.css')
+  body
+    h1
+      | Din nettleser (#{browser.name} #{browser.version}) er desverre utdatert.
+    h3 STIHK.nos nye nettside krever desverre en moderne nettleser
+    div(id='browsehappy') For å se en oversikt over moderne nettlesere klikk
+      = " "
+      a(href='http://browsehappy.com/') her
+      |  for å finne en som passer deg.

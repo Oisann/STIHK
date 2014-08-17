@@ -1,0 +1,11 @@
+body {
+  margin: 0px;
+  background-color: #f00;
+  color: #fff;
+  text-align: center;
+}
+
+a {
+  color: #fff;
+  font-size: 32px;
+}

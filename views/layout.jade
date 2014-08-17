@@ -1,0 +1,24 @@
+doctype html
+html(ng-app='stihk')
+  head
+    meta(charset='utf-8')
+    meta(name='author', content='Jonas Refseth')
+    meta(name='description', content='Trøndersk hockey samlet på ett sted!')
+    meta(name='keywords', content='trønder, hockey, trondheim, stihk, sør-trønderlag, ishockey, ishall, leangen, dalgård')
+    meta(name='viewport', content='width=device-width')
+    title= title + ' - Sør-Trøndelag Ishockeykrets'
+    link(rel='stylesheet', href='/css/all.min.css')
+    script(src='/js/all.min.js')
+  body(ng-controller='StihkController')
+    header
+      a(href='./', alt='Sør-Trønderlag Ishockeykrets')
+        div(id='logo')
+    div(id='cont')
+      block content
+      footer
+        | Copyright Sør-Trøndelag Ishockeykrets © 2014
+        br
+        span(id='small')
+          = "Laget av "
+          a(href='http://jonasrefseth.no/')
+            | Jonas Refseth

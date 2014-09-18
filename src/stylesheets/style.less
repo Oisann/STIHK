@@ -2,6 +2,9 @@
 @text-color: #000;
 @header-height: 80px;
 
+@border-color: #e7e7e7;
+@menu-background: #f8f8f8;
+
 html {
 	background-color: @background;
 	color: @text-color;
@@ -12,16 +15,52 @@ html {
 	height: 80px;
 	background: #fff url('../img/logo.png') no-repeat left top;
 	background-size: contain;
+	margin-left: 10px;
+	margin-top: -1px;
+	display: inline-block;
 }
 
 header {
 	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: @header-height;
+	background-color: @menu-background;
+	border-bottom: 1px solid @border-color;
+
+	#user {
+		float: right;
+		margin-top: 28px;
+		margin-right: 10px;
+	}
+
+	#weather {
+		position: fixed;
+		display: inline-block;
+		top: 30px;
+		left: 280px;
+		font-weight: bold;
+
+		.trondheim {
+			padding-right: 20px;
+		}
+
+		.weather {
+			font-weight: normal;
+		}
+	}
 }
 
 #cont {
-	padding-top: @header-height;
-	padding-right: 250px;
-	min-height: calc(~'100%')
+	margin-right: 250px;
+	margin-top: @header-height;
+	padding: 10px;
+}
+
+/* Need to do this to ensure the tag renders over the normal one */
+div#cont.nofeed {
+	margin-right: 0px;
 }
 
 #feed {
@@ -29,11 +68,29 @@ header {
 	top: @header-height;
 	right: 0px;
 	bottom: 0px;
-	background-color: lightgray;
 	height: calc(~'100% - ' @header-height);
 	width: 250px - 1px;
-	border-left: 1px solid @text-color;
+	border-left: 1px solid #e7e7e7;
 	overflow: auto;
+}
+
+/* TODO: Fix register button on smaller screens */
+.modal-body {
+	height: 137px;
+	.login-form {
+		.btn {
+			margin-right: 10px;
+			margin-bottom: 10px;
+			float: right;
+		}
+		input#remember {
+			margin-right: 5px;
+		}
+		input {
+				margin-right: 800px;
+				margin-bottom: 10px;
+		}
+	}
 }
 
 footer {

@@ -7,29 +7,75 @@ html {
   height: 80px;
   background: #ffffff url('../img/logo.png') no-repeat left top;
   background-size: contain;
+  margin-left: 10px;
+  margin-top: -1px;
+  display: inline-block;
 }
 header {
   position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+}
+header #user {
+  float: right;
+  margin-top: 28px;
+  margin-right: 10px;
+}
+header #weather {
+  position: fixed;
+  display: inline-block;
+  top: 30px;
+  left: 280px;
+  font-weight: bold;
+}
+header #weather .trondheim {
+  padding-right: 20px;
+}
+header #weather .weather {
+  font-weight: normal;
 }
 #cont {
-  padding-top: 80px;
-  padding-right: 250px;
-  min-height: calc(100%);
+  margin-right: 250px;
+  margin-top: 80px;
+  padding: 10px;
+}
+/* Need to do this to ensure the tag renders over the normal one */
+div#cont.nofeed {
+  margin-right: 0px;
 }
 #feed {
   position: fixed;
   top: 80px;
   right: 0px;
   bottom: 0px;
-  background-color: lightgray;
   height: calc(100% -  80px);
   width: 249px;
-  border-left: 1px solid #000000;
+  border-left: 1px solid #e7e7e7;
   overflow: auto;
+}
+/* TODO: Fix register button on smaller screens */
+.modal-body {
+  height: 137px;
+}
+.modal-body .login-form .btn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: right;
+}
+.modal-body .login-form input#remember {
+  margin-right: 5px;
+}
+.modal-body .login-form input {
+  margin-right: 800px;
+  margin-bottom: 10px;
 }
 footer {
   text-align: center;
   bottom: 0px;
 }
 
-/*# sourceMappingURL=maps\style.css.map */
+/*# sourceMappingURL=maps/style.css.map */

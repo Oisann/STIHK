@@ -11,14 +11,46 @@ html(ng-app='stihk')
     script(src='/js/all.min.js')
   body(ng-controller='StihkController')
     header
-      a(href='./', alt='Sør-Trønderlag Ishockeykrets')
-        div(id='logo')
-    div(id='cont')
+      a(href='/', alt='Sør-Trønderlag Ishockeykrets')
+        #logo
+      #weather.hidden
+        span.trondheim= "Trondheim "
+          span.weather N/A
+          | °C
+        span.korsvegen= "Korsvegen "
+          span.weather N/A
+          | °C
+      #user
+        = "Velkommen, gjest! "
+        button.btn.btn-success.btn-sm(style='margin-top: -3px', data-toggle='modal', data-target='#login') Logg inn
+    #cont.nofeed
+      ol(class='breadcrumb')
+        li
+          a(href='/') Hjem
+        li
+          a(href='/borte') Borte
       block content
+      #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal')
+                  span(aria-hidden='true') ×
+                  span.sr-only Lukk
+                h4#myModalLabel.modal-title Logg inn
+              .modal-body
+                form(action='#!/logginn', method='post', class='login-form')
+                  input(type='text', name='email', placeholder='E-postadresse')
+                  input(type='password', name='password', placeholder='Passord')
+                  input#remember(type='checkbox', name='checkbox')
+                  label(for='remember') Husk meg?
+                  input.btn.btn-success(type='submit', value='Logg inn')
+                  button.btn.btn-danger(type='button', data-dismiss='modal') Avbryt
+                  a.btn.btn-info(role='button', href='#!/registrering') Registrer deg
       footer
         | Copyright Sør-Trøndelag Ishockeykrets © 2014
         br
-        span(id='small')
+        span#small
           = "Laget av "
           a(href='http://jonasrefseth.no/')
             | Jonas Refseth

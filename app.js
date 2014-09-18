@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('static-favicon');
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -53,6 +53,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
   });
 */
 var routes = require('./routes/index');
+var api = require('./routes/api');
 var users = require('./routes/users');
 var angular = require('./routes/angular');
 
@@ -64,14 +65,15 @@ app.set('view engine', 'jade');
 
 app.use(favicon(path.join(__dirname, 'public/img/favicon.png')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+/*app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());*/
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.all(/^(?!(\/update)).*$/, ensureLatestBrowser);
 
 app.use('/', routes);
+app.use('/api', api);
 app.use('/users', users);
 app.use('/module', angular);
 

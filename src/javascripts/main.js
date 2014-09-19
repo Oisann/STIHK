@@ -1,4 +1,6 @@
-var app = angular.module('stihk', []);
+var app = angular.module('stihk', []),
+    nextWeather = 0,
+    date = new Date();
 
 app.factory('socket', function() {
   return io.connect();
@@ -17,6 +19,9 @@ app.controller('StihkController', ['$scope', 'socket', function($scope, socket){
 $(document).ready(function() {
   displayFeed($(window).width());
   getWeather();
+  setInterval(function() {
+    if(nextWeather < Math.round(date.getTime())) getWeather(); //Update weather randomly
+  }, 1000);
   $(window).resize(function() {
     displayFeed($(this).width());
   });
@@ -37,35 +42,23 @@ var displayFeed = function(width) {
 }
 
 var getWeather = function() {
-    $.getJSON('api/weather/local', function(json){
-      updateWeather(json);
-    }).fail(function() {
-      updateWeather();
-    });
+  if($('header #weather').hasClass('hidden')) return;
+  $.getJSON('api/weather/local', function(json){
+    updateWeather(json);
+  }).fail(function() {
+    updateWeather();
+  });
 }
 
 var updateWeather = function(data) {
   var div = $('header #weather');
-  if(data === undefined) {
-      div.hasClass('hidden') ? console.log('Weather failed') : div.addClass('hidden');
-      return;
-  }
-  if(div.hasClass('hidden')) {
-    div.animate({ opacity: 0.0 }, 1, function() {
-      div.find('.trondheim .weather').text(data.trondheim.temp);
-      div.find('.korsvegen .weather').text(data.korsvegen.temp);
-      div.find('.trondheim').attr('title', data.trondheim.title);
-      div.find('.korsvegen').attr('title', data.korsvegen.title);
-      div.removeClass('hidden');
-      div.animate({ opacity: 1.0 }, 1000);
-    });
-  } else {
-    div.animate({ opacity: 0.0 }, 1000, function() {
-      div.find('.trondheim .weather').text(data.trondheim.temp);
-      div.find('.korsvegen .weather').text(data.korsvegen.temp);
-      div.find('.trondheim').attr('title', data.trondheim.title);
-      div.find('.korsvegen').attr('title', data.korsvegen.title);
-      div.animate({ opacity: 1.0 }, 1000);
-    });
-  }
+  if(data === undefined) return; //No data, no animation
+  nextWeather = Math.round(date.getTime() + (Math.random() * 100000) + 30000); //Update the weather again in 30-130 sec
+  div.animate({ opacity: 0.0 }, 1000, function() {
+    div.find('.trondheim .weather').text(data.trondheim.temp);
+    div.find('.korsvegen .weather').text(data.korsvegen.temp);
+    div.find('.trondheim').attr('title', data.trondheim.title);
+    div.find('.korsvegen').attr('title', data.korsvegen.title);
+    div.animate({ opacity: 1.0 }, 1000);
+  });
 }
